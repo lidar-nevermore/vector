@@ -45,3 +45,19 @@ template<typename T>
 	}	
 	return 0;
 }
+
+int split(const string &line,vector<int>& line_ints)
+{
+	line_ints.clear();
+	string dlm=" ,\n";	
+	size_t current =line.find_first_not_of(dlm,0);
+	size_t next =line.find_first_of(dlm,current);
+	while (current!=string::npos)
+	{		
+		line_ints.push_back(atoi(line.substr(current,next-current).c_str()));
+		current =line.find_first_not_of(dlm,next);
+		next =line.find_first_of(dlm,current);
+	}		
+	if( line_ints.empty())return 0;	
+	return 1;
+}

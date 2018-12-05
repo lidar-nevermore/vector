@@ -27,7 +27,7 @@ static char *readline(FILE *input)
 }
 
 template <typename T>
-void readfile(const char *filename, std::vector<std::vector<double>> &vec)
+void readfile(const char *filename, std::vector<std::vector<T>> &vec)
 {
 	FILE *fp;	
 	int num_of_records, num_elements,i;
@@ -85,6 +85,30 @@ void readfile(const char *filename, std::vector<std::vector<double>> &vec)
 	free(line);
 	free(line_data);
 	printf("total time: %g sec for %d records\n", taketime() - start_time, num_of_records);//taketime
+	fclose(fp);
+	return;
+}
+template <typename T>
+void savefile(const std::vector<std::vector<T>> &vec, const char *filename)
+{
+	T value;
+	FILE *fp;
+	double start_time = taketime();
+	fopen_s(&fp,filename, "w");
+	if (fp == NULL)
+	{
+		printf("can't open output file %s\n", filename);
+		return;
+	}	
+	for (int i = 0; i < vec.size(); ++i)
+	{		
+		for (int j = 0; j < vec[i].size(); ++j)
+		{
+			fprintf(fp, "%g ", double(vec[i][j]));
+		}
+		fprintf(fp, "\n");
+	}
+	printf("total time: %g sec for %d records\n", taketime() - start_time, vec.size());
 	fclose(fp);
 	return;
 }

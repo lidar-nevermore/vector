@@ -22,7 +22,7 @@ template<typename T>
 	return 0;
 }
 template<typename T> 
-	int save(const string &filename,vector<vector<T>> &vec	)
+	int save(const vector<vector<T>> &vec,const string &filename)
 {
 	ofstream ofs(filename);
 	for (int i=0;i<vec.size();i++)
@@ -35,7 +35,7 @@ template<typename T>
 	return 0;
 }
 template<typename T> 
-	int display(vector<vector<T>> &vec	)
+	int display(const vector<vector<T>> &vec)
 {	
 	for (int i=0;i<vec.size();i++)
 	{

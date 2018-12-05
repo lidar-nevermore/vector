@@ -26,6 +26,7 @@ static char *readline(FILE *input)
 	return line;
 }
 
+template <typename T>
 void readfile(const char *filename, std::vector<std::vector<double>> &vec)
 {
 	FILE *fp;	
@@ -79,7 +80,7 @@ void readfile(const char *filename, std::vector<std::vector<double>> &vec)
 			line_data[num_elements] = value;
 			num_elements++;
 		}
-		vec.push_back(std::move(std::vector<double>(line_data, line_data + num_elements)));
+		vec.push_back(std::move(std::vector<T>(line_data, line_data + num_elements)));
 	}	
 	free(line);
 	free(line_data);

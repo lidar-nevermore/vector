@@ -26,7 +26,7 @@ static char *readline(FILE *input)
 	return line;
 }
 
-static void readfile(const char *filename, std::vector<std::vector<double>> &vec)
+void readfile(const char *filename, std::vector<std::vector<double>> &vec)
 {
 	FILE *fp;	
 	int num_of_records, num_elements,i;

@@ -54,7 +54,8 @@ int split(const string &line,vector<int>& line_ints)
 	size_t next =line.find_first_of(dlm,current);
 	while (current!=string::npos)
 	{		
-		line_ints.push_back(atoi(line.substr(current,next-current).c_str()));
+		line_ints.push_back(atoi(line.data()+current));
+		//line_ints.push_back(atoi(line.substr(current,next-current).c_str()));
 		current =line.find_first_not_of(dlm,next);
 		next =line.find_first_of(dlm,current);
 	}		
